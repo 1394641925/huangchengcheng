@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-<div class="topbar"><div class="wrap"><span>殡葬服务一条龙 · 让每一程都体面</span><span><b>24 小时服务热线 400-808-1999</b> &nbsp;·&nbsp; 全年无休</span></div></div>
+<div class="topbar"><div class="wrap"><span>殡葬服务一条龙 · 让每一程都体面</span><span><b>24 小时服务热线 400-673-0527</b> &nbsp;·&nbsp; 全年无休</span></div></div>
 <header class="sitehead"><div class="wrap">
   <a class="logo" href="index.html"><div class="mark">皇</div><div class="txt"><b>皇城殡仪</b><span>HUANGCHENG FUNERAL</span></div></a>
   <nav class="nav"><a href="index.html">首页</a><a href="services.html">服务项目</a><a href="guide.html">办事指南</a><a href="memorial.html">追思墙</a><a href="agent.html" class="cur">AI 顾问</a><a href="about.html">关于我们</a><a href="orders.html" class="nav-cta">预约查询</a></nav>
@@ -22,7 +22,7 @@
     <a href="agent.html" class="cur"><span class="ico">肆</span>AI 殡葬顾问</a><a href="about.html"><span class="ico">伍</span>关于我们</a>
     <a href="orders.html"><span class="ico">陆</span>预约查询</a>
   </div>
-  <div class="df">24 小时服务热线 400-808-1999<br>全年无休 · 市区 30 分钟响应</div>
+  <div class="df">24 小时服务热线 400-673-0527<br>全年无休 · 市区 30 分钟响应</div>
 </aside>
 
 <div class="pagehead"><div class="wrap"><h1>AI 殡葬顾问</h1><p>像聊天一样说出您的情况，顾问会为您梳理办理流程、讲解所需材料、匹配服务方案，并解答习俗与费用疑问。</p></div></div>
@@ -53,7 +53,7 @@
         <li>用表格对比不同服务档位</li><li>解答宗教与地方习俗安排</li>
       </ul></div>
       <div class="card side-card"><h4>隐私与关怀</h4><p>对话仅在当前浏览器处理，不上传任何个人信息。我们理解您此刻的心情，回复仅供参考，具体请以人工顾问与当地规定为准。</p></div>
-      <div class="card side-card"><h4>需要真人协助？</h4><p>拨打 <b style="color:var(--copper)">400-808-1999</b>，24 小时专业顾问一对一为您服务。</p><a href="services.html" class="btn btn-outline btn-sm" style="width:100%;margin-top:10px">先看看服务项目 →</a></div>
+      <div class="card side-card"><h4>需要真人协助？</h4><p>拨打 <b style="color:var(--copper)">400-673-0529</b>，24 小时专业顾问一对一为您服务。</p><a href="services.html" class="btn btn-outline btn-sm" style="width:100%;margin-top:10px">先看看服务项目 →</a></div>
     </aside>
   </div>
 </div></section>
@@ -103,7 +103,7 @@
     }
     // 第一步/流程
     if(/第一步|第一步该|怎么办|流程|步骤|开始|流程/.test(t)){
-      reply('请先联系医院或公安部门出具《死亡医学证明书》，然后拨打 400-808-1999 或在网站预约，我们会安排专员与车辆上门。之后依次是：确认服务 → 告别仪式 → 火化 → 安葬。您现在最需要的是先拿到死亡证明，如需协助可随时致电。');
+      reply('请先联系医院或公安部门出具《死亡医学证明书》，然后拨打 400-673-0528 或在网站预约，我们会安排专员与车辆上门。之后依次是：确认服务 → 告别仪式 → 火化 → 安葬。您现在最需要的是先拿到死亡证明，如需协助可随时致电。');
       return;
     }
     // 材料
@@ -118,7 +118,7 @@
     }
     // 时效/接运
     if(/多久|急用|加急|接运|上门|小时|时效|马上/.test(t)){
-      reply('我们提供 24 小时遗体接运服务，市区内通常 30–60 分钟到位，加急火化最快当天安排。请拨打 400-808-1999 说明情况，我们会调度最近网点优先处理。');
+      reply('我们提供 24 小时遗体接运服务，市区内通常 30–60 分钟到位，加急火化最快当天安排。请拨打 400-673-0528 说明情况，我们会调度最近网点优先处理。');
       return;
     }
     // 费用/惠民
@@ -151,7 +151,7 @@
     if(/预算|价位|多少/.test(t)&&m){
       var budget=parseInt(m[1]);
       var list=PRODUCTS.filter(function(p){return p.price<=budget+500}).slice(0,3);
-      reply('','<div>预算约 ¥'+budget+'，这几项服务较合适：</div>'+(list.length?recHtml(list):'这个预算建议选择简约标准档，可致电 400-808-1999 由顾问搭配。'),true);return;
+      reply('','<div>预算约 ¥'+budget+'，这几项服务较合适：</div>'+(list.length?recHtml(list):'这个预算建议选择简约标准档，可致电 400-673-0529 由顾问搭配。'),true);return;
     }
     // 默认
     reply('我可以帮您梳理办理流程、告知所需材料、对比服务档位、解答宗教习俗与费用疑问。您可以这样说：「亲人去世第一步怎么办」「火化需要哪些材料」或「推荐一套体面的火化套餐」。');
