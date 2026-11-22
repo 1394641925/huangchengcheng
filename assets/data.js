@@ -1,4 +1,4 @@
-/* 皇城殡仪 —— 服务/商品数据、购物车/订单存储 */
+/* 皇城殡仪 —— 服务数据、预约清单/订单存储 */
 window.HJ = (function(){
   var PKEY='hc_products_cart', OKEY='hc_orders';
 
