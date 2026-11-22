@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>填写订单 — 皇城殡仪</title><link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="topbar"><div class="wrap"><span> dignified farewell · 让每一程都体面</span><span><b>服务热线 400-808-1999</b> · 24h 人工值守</span></div></div>
+<header class="sitehead"><div class="wrap">
+  <a class="logo" href="index.html"><div class="mark">皇</div><div class="txt"><b>皇城殡仪</b><span>HUANG CHENG · FAREWELL</span></div></a>
+  <nav class="nav"><a href="index.html">首页</a><a href="products.html">殡葬服务</a><a href="agent.html">AI 服务顾问</a><a href="about.html">关于我们</a><a href="orders.html">订单查询</a><a href="cart.html" class="nav-cta">购物车 <span data-cart-count style="display:none">0</span></a></nav>
+  <button class="burger" id="burger">☰ 菜单</button>
+</div></header>
+<div class="drawer-mask" id="drawerMask"></div><aside class="drawer" id="drawer">
+  <div class="dh"><b>皇城殡仪</b><button id="drawerClose">×</button></div>
+  <div class="dlist"><a href="index.html"><span class="ico">⌂</span>首页</a><a href="products.html"><span class="ico">衣</span>殡葬服务</a><a href="agent.html"><span class="ico">AI</span>AI 服务顾问</a><a href="about.html"><span class="ico">关</span>关于我们</a><a href="orders.html"><span class="ico">单</span>订单查询</a><a href="cart.html"><span class="ico">篮</span>购物车 <span data-cart-count style="display:none">0</span></a></div>
+  <div class="df">服务热线 400-808-1999<br>24 小时人工值守 · 全国配送</div>
+</aside>
+
+<div class="crumb"><div class="wrap"><a href="index.html">首页</a><span>/</span><a href="cart.html">购物车</a><span>/</span>填写信息</div></div>
+<section><div class="wrap">
+  <div class="steps">
+    <div class="s done"><span class="n">✓</span><span class="t">购物车</span></div><div class="line"></div>
+    <div class="s on"><span class="n">2</span><span class="t">填写信息</span></div><div class="line"></div>
+    <div class="s"><span class="n">3</span><span class="t">支付</span></div><div class="line"></div>
+    <div class="s"><span class="n">4</span><span class="t">完成</span></div>
+  </div>
+  <div class="cart-layout">
+    <div>
+      <form id="checkoutForm">
+        <div class="card section-card">
+          <h4 style="font-family:var(--serif);font-size:18px;margin-bottom:18px">收货与联系信息</h4>
+          <div class="form-grid">
+            <div class="field"><label>收货人姓名 *</label><input id="f_name" placeholder="请输入姓名"><div class="err" id="e_name">请填写姓名</div></div>
+            <div class="field"><label>联系电话 *</label><input id="f_phone" placeholder="11 位手机号"><div class="err" id="e_phone">请填写正确的手机号</div></div>
+            <div class="field full"><label>配送地址 *</label><input id="f_addr" placeholder="省 / 市 / 区 / 街道门牌"><div class="err" id="e_addr">请填写配送地址</div></div>
+            <div class="field"><label>所在城市</label><input id="f_city" placeholder="例如：成都市"></div>
+            <div class="field"><label>期望服务时间</label><select id="f_time"><option>尽快安排（加急）</option><option>明天上午</option><option>明天下午</option><option>指定日期（备注）</option></select></div>
+            <div class="field full"><label>备注（逝者称谓、宗教习俗等特殊需求）</label><textarea id="f_note" rows="3" placeholder="例如：为父亲准备，佛教仪式，需素色…"></textarea></div>
+          </div>
+        </div>
+        <div class="card section-card">
+          <h4 style="font-family:var(--serif);font-size:18px;margin-bottom:16px">支付方式</h4>
+          <div class="pay-methods" id="payMethods">
+            <label class="on"><input type="radio" name="pay" value="微信支付" checked> 微信支付</label>
+            <label><input type="radio" name="pay" value="支付宝"> 支付宝</label>
+            <label><input type="radio" name="pay" value="银行卡"> 银行卡</label>
+            <label><input type="radio" name="pay" value="到付"> 货到付款</label>
+          </div>
+          <p class="tiny" style="margin-top:12px">本站为演示网站，不会产生真实扣款。提交后可在「订单查询」中查看模拟订单。</p>
+        </div>
+      </form>
+    </div>
+    <div class="card summary">
+      <h4>订单确认</h4>
+      <div id="miniItems" style="max-height:220px;overflow:auto;margin-bottom:12px"></div>
+      <div class="line"><span>商品金额</span><b id="sub">¥0</b></div>
+      <div class="line"><span>服务费</span><b style="color:var(--ok)">无附加费</b></div>
+      <div class="line total"><span>应付总额</span><b id="total">¥0</b></div>
+      <button class="btn btn-gold" id="submitBtn" form="checkoutForm" type="submit">提交订单并支付 →</button>
+      <a href="cart.html" class="btn btn-ghost btn-sm" style="width:100%;margin-top:10px">返回修改</a>
+    </div>
+  </div>
+</div></section>
+
+<footer class="foot"><div class="wrap"><div class="bottom"><span>© 2026 皇城殡仪 HUANGCHENG · 本站为虚构商业演示网站</span><span>隐私政策 · 服务条款</span></div></div></footer>
+<script src="assets/data.js"></script><script src="assets/app.js"></script>
+<script>
+(function(){
+  var items=window.HJ.cartDetail();
+  if(!items.length){location.href='cart.html';return}
+  var mini=document.getElementById('miniItems');
+  items.forEach(function(x){mini.innerHTML+='<div style="display:flex;gap:8px;align-items:center;padding:6px 0;border-bottom:1px dashed var(--line)"><img src="'+x.img+'" style="width:40px;height:40px;object-fit:cover;border-radius:6px"><div class="small" style="flex:1;min-width:0">'+x.name+'<br><span class="tiny">'+x.size+' × '+x.qty+'</span></div><b class="small">'+window.HJ.money(x.price*x.qty)+'</b></div>'});
+  document.getElementById('sub').textContent=window.HJ.money(window.HJ.cartTotal());
+  document.getElementById('total').textContent=window.HJ.money(window.HJ.cartTotal());
+
+  var pay='微信支付';
+  document.getElementById('payMethods').addEventListener('change',function(e){
+    if(e.target.name==='pay')pay=e.target.value;
+    this.querySelectorAll('label').forEach(function(l){l.classList.remove('on')});
+    e.target.closest('label').classList.add('on');
+  });
+
+  function err(id,on){document.getElementById('e_'+id).classList.toggle('on',on)}
+  document.getElementById('checkoutForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=document.getElementById('f_name').value.trim(),phone=document.getElementById('f_phone').value.trim(),addr=document.getElementById('f_addr').value.trim();
+    var ok=true;
+    err('name',!name);if(!name)ok=false;
+    var pok=/^1\d{10}$/.test(phone);err('phone',!pok);if(!pok)ok=false;
+    err('addr',!addr);if(!addr)ok=false;
+    if(!ok)return;
+    var info={name:name,phone:phone,addr:addr,city:document.getElementById('f_city').value.trim(),time:document.getElementById('f_time').value,note:document.getElementById('f_note').value.trim(),pay:pay};
+    var order=window.HJ.placeOrder(info);
+    sessionStorage.setItem('hc_last_order',order.no);
+    location.href='success.html?no='+encodeURIComponent(order.no);
+  });
+  var c=document.getElementById('drawerClose');
+  if(c)c.addEventListener('click',function(){document.getElementById('drawerMask').classList.remove('on');document.getElementById('drawer').classList.remove('on')});
+})();
+</script>
+</body></html>
