@@ -1,6 +1,6 @@
-/* 皇城殡仪 —— 公共交互：导航抽屉 / 购物车角标 / 提示 */
+/* 皇城殡仪 —— 公共交互：导航抽屉 / 预约角标 / 提示 */
 (function(){
-  // 购物车角标
+  // 预约角标
   function paintCart(){
     var els=document.querySelectorAll('[data-cart-count]');
     if(!els.length)return;
