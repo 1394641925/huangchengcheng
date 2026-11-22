@@ -22,7 +22,7 @@
   --serif:"Songti SC","STSong","SimSun",serif;
 }
 @media (prefers-color-scheme:dark){
-  :root{color-scheme:dark;--ink0:#0c0d0e;--ink:#1b1c1e;--ink2:#a7a49d;--ink3:#7b7872;--paper:#141516;--paper-2:#1c1d1f;--card:#1a1b1c;--copper:#c08a5c;--copper-2:#d7a878;--jade:#7d9287;--line:#33322f;--line-2:#45433e;--shadow:none;--shadow-lg:0 24px 60px rgba(0,0,0,.5)}
+  :root{color-scheme:dark;--ink0:#0c0d0e;--ink:#ece7dd;--ink2:#b3aea4;--ink3:#9c9890;--paper:#141516;--paper-2:#1c1d1f;--card:#1c1d1e;--copper:#d09a68;--copper-2:#e0b184;--jade:#8fa79a;--line:#35342f;--line-2:#4a4842;--shadow:none;--shadow-lg:0 24px 60px rgba(0,0,0,.5)}
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;overflow-x:hidden}
