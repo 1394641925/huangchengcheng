@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>服务项目 — 皇城殡仪</title><link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="topbar"><div class="wrap"><span>殡葬服务一条龙 · 让每一程都体面</span><span><b>24 小时服务热线 400-808-1999</b> &nbsp;·&nbsp; 全年无休</span></div></div>
+<header class="sitehead"><div class="wrap">
+  <a class="logo" href="index.html"><div class="mark">皇</div><div class="txt"><b>皇城殡仪</b><span>HUANGCHENG FUNERAL</span></div></a>
+  <nav class="nav"><a href="index.html">首页</a><a href="services.html" class="cur">服务项目</a><a href="guide.html">办事指南</a><a href="memorial.html">追思墙</a><a href="agent.html">AI 顾问</a><a href="about.html">关于我们</a><a href="orders.html" class="nav-cta">预约查询</a></nav>
+  <button class="burger" id="burger">☰ 菜单</button>
+</div></header>
+<div class="drawer-mask" id="drawerMask"></div>
+<aside class="drawer" id="drawer">
+  <div class="dh"><b>皇城殡仪</b><button id="drawerClose">×</button></div>
+  <div class="dlist">
+    <a href="index.html"><span class="ico">◈</span>首页</a><a href="services.html" class="cur"><span class="ico">壹</span>服务项目</a>
+    <a href="guide.html"><span class="ico">贰</span>办事指南</a><a href="memorial.html"><span class="ico">叁</span>追思墙</a>
+    <a href="agent.html"><span class="ico">肆</span>AI 殡葬顾问</a><a href="about.html"><span class="ico">伍</span>关于我们</a>
+    <a href="orders.html"><span class="ico">陆</span>预约查询</a>
+  </div>
+  <div class="df">24 小时服务热线 400-808-1999<br>全年无休 · 市区 30 分钟响应</div>
+</aside>
+
+<div class="pagehead"><div class="wrap"><h1>服务项目</h1><p>涵盖接运、告别、火化、安葬全流程，明码标价，规范服务。您可按类别筛选，或让 AI 顾问为您梳理。</p></div></div>
+<div class="crumb"><div class="wrap"><a href="index.html">首页</a><span>/</span>服务项目</div></div>
+
+<section><div class="wrap">
+  <div class="filters" id="filters">
+    <button class="on" data-cat="全部">全部服务</button>
+    <button data-cat="火化服务">火化服务</button>
+    <button data-cat="骨灰坛">骨灰坛</button>
+    <button data-cat="告别厅">告别厅</button>
+    <button data-cat="生态安葬">生态安葬</button>
+  </div>
+  <div class="prod-grid" id="grid"></div>
+  <div class="notice">💡 不确定如何选择？试试 <a href="agent.html">AI 殡葬顾问 →</a>，说出您的情况即可获得服务建议与流程指引。</div>
+</div></section>
+
+<footer class="foot"><div class="wrap"><div class="bottom"><span>© 2026 皇城殡仪服务馆 · 本站为虚构商业演示网站</span><span>隐私政策 · 服务条款</span></div></div></footer>
+<script src="assets/data.js"></script><script src="assets/app.js"></script>
+<script>
+(function(){
+  var grid=document.getElementById('grid');
+  function render(cat){
+    grid.innerHTML='';
+    var list=window.HJ.PRODUCTS.filter(function(p){return cat==='全部'||p.cat===cat});
+    list.forEach(function(p){
+      var el=document.createElement('div');el.className='prod';
+      el.innerHTML='<a class="img" href="service.html?id='+p.id+'"><span class="corner tag">'+p.tags[0]+'</span><img src="'+p.img+'" alt="'+p.name+'"></a>'+
+        '<div class="body"><h4><a href="service.html?id='+p.id+'">'+p.name+'</a></h4><div class="desc">'+p.desc+'</div>'+
+        '<div class="price"><b>'+window.HJ.money(p.price)+'</b><del>'+window.HJ.money(p.old)+'</del></div>'+
+        '<div class="foot"><a href="service.html?id='+p.id+'" class="btn btn-outline btn-sm">详情</a>'+
+        '<a href="appointment.html?id='+p.id+'" class="btn btn-copper btn-sm">预约</a></div></div>';
+      grid.appendChild(el);
+    });
+  }
+  render('全部');
+  document.getElementById('filters').addEventListener('click',function(e){
+    if(e.target.tagName!=='BUTTON')return;
+    this.querySelectorAll('button').forEach(function(b){b.classList.remove('on')});
+    e.target.classList.add('on');render(e.target.dataset.cat);
+  });
+  var c=document.getElementById('drawerClose');
+  if(c)c.addEventListener('click',function(){document.getElementById('drawerMask').classList.remove('on');document.getElementById('drawer').classList.remove('on')});
+})();
+</script>
+</body></html>
