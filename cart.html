@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>购物车 — 皇城殡仪</title><link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="topbar"><div class="wrap"><span> dignified farewell · 让每一程都体面</span><span><b>服务热线 400-808-1999</b> · 24h 人工值守</span></div></div>
+<header class="sitehead"><div class="wrap">
+  <a class="logo" href="index.html"><div class="mark">皇</div><div class="txt"><b>皇城殡仪</b><span>HUANG CHENG · FAREWELL</span></div></a>
+  <nav class="nav"><a href="index.html">首页</a><a href="products.html">殡葬服务</a><a href="agent.html">AI 服务顾问</a><a href="about.html">关于我们</a><a href="orders.html">订单查询</a><a href="cart.html" class="nav-cta">购物车 <span data-cart-count style="display:none">0</span></a></nav>
+  <button class="burger" id="burger">☰ 菜单</button>
+</div></header>
+<div class="drawer-mask" id="drawerMask"></div><aside class="drawer" id="drawer">
+  <div class="dh"><b>皇城殡仪</b><button id="drawerClose">×</button></div>
+  <div class="dlist"><a href="index.html"><span class="ico">⌂</span>首页</a><a href="products.html"><span class="ico">衣</span>殡葬服务</a><a href="agent.html"><span class="ico">AI</span>AI 服务顾问</a><a href="about.html"><span class="ico">关</span>关于我们</a><a href="orders.html"><span class="ico">单</span>订单查询</a><a href="cart.html" class="cur"><span class="ico">篮</span>购物车 <span data-cart-count style="display:none">0</span></a></div>
+  <div class="df">服务热线 400-808-1999<br>24 小时人工值守 · 全国配送</div>
+</aside>
+
+<div class="crumb"><div class="wrap"><a href="index.html">首页</a><span>/</span>购物车</div></div>
+<section><div class="wrap">
+  <div class="steps">
+    <div class="s on"><span class="n">1</span><span class="t">购物车</span></div><div class="line"></div>
+    <div class="s"><span class="n">2</span><span class="t">填写信息</span></div><div class="line"></div>
+    <div class="s"><span class="n">3</span><span class="t">支付</span></div><div class="line"></div>
+    <div class="s"><span class="n">4</span><span class="t">完成</span></div>
+  </div>
+  <div class="cart-layout">
+    <div class="card" style="padding:6px 22px" id="cartList"></div>
+    <div class="card summary">
+      <h4>订单摘要</h4>
+      <div class="line"><span>商品件数</span><b id="cnt">0</b></div>
+      <div class="line"><span>商品金额</span><b id="sub">¥0</b></div>
+      <div class="line"><span>服务费</span><b style="color:var(--ok)">无附加费</b></div>
+      <div class="line total"><span>应付总额</span><b id="total">¥0</b></div>
+      <a href="checkout.html" class="btn btn-gold" id="goCheckout">去结算 →</a>
+      <a href="products.html" class="btn btn-ghost btn-sm" style="width:100%;margin-top:10px">继续选购</a>
+    </div>
+  </div>
+</div></section>
+
+<footer class="foot"><div class="wrap"><div class="bottom"><span>© 2026 皇城殡仪 HUANGCHENG · 本站为虚构商业演示网站</span><span>隐私政策 · 服务条款</span></div></div></footer>
+<script src="assets/data.js"></script><script src="assets/app.js"></script>
+<script>
+(function(){
+  var box=document.getElementById('cartList'),items=window.HJ.cartDetail();
+  if(!items.length){
+    box.innerHTML='<div class="center" style="padding:60px 20px"><div style="font-size:48px">🛒</div><h3 style="font-family:var(--serif);margin:12px 0">购物车还是空的</h3><p class="small">去挑选一套体面的殡葬服务吧。</p><a href="products.html" class="btn btn-navy" style="margin-top:18px">浏览产品</a></div>';
+    document.getElementById('goCheckout').style.display='none';
+  }else{
+    items.forEach(function(x){
+      var d=document.createElement('div');d.className='cart-item';
+      d.innerHTML='<a href="product.html?id='+x.id+'"><img src="'+x.img+'" alt=""></a>'+
+        '<div class="info"><h4><a href="product.html?id='+x.id+'">'+x.name+'</a></h4><div class="meta">尺码 '+x.size+' · 单价 '+window.HJ.money(x.price)+'</div>'+
+        '<div class="qty" style="margin-top:8px"><button class="qdec" data-id="'+x.id+'" data-size="'+x.size+'" data-q="'+x.qty+'">−</button><span>'+x.qty+'</span><button class="qinc" data-id="'+x.id+'" data-size="'+x.size+'" data-q="'+x.qty+'">+</button></div></div>'+
+        '<div style="text-align:right"><div class="price">'+window.HJ.money(x.price*x.qty)+'</div><button class="rm" data-id="'+x.id+'" data-size="'+x.size+'">移除</button></div>';
+      box.appendChild(d);
+    });
+    document.getElementById('cnt').textContent=window.HJ.cartCount()+' 件';
+    document.getElementById('sub').textContent=window.HJ.money(window.HJ.cartTotal());
+    document.getElementById('total').textContent=window.HJ.money(window.HJ.cartTotal());
+  }
+  box.addEventListener('click',function(e){
+    var t=e.target,id,size,q;
+    if(t.classList.contains('qinc')){id=t.dataset.id;size=t.dataset.size;q=parseInt(t.dataset.q)+1;window.HJ.updateQty(id,size,q);location.reload()}
+    if(t.classList.contains('qdec')){id=t.dataset.id;size=t.dataset.size;q=parseInt(t.dataset.q)-1;window.HJ.updateQty(id,size,q);location.reload()}
+    if(t.classList.contains('rm')){window.HJ.removeCart(t.dataset.id,t.dataset.size);window.HJToast('已移除');location.reload()}
+  });
+  var c=document.getElementById('drawerClose');
+  if(c)c.addEventListener('click',function(){document.getElementById('drawerMask').classList.remove('on');document.getElementById('drawer').classList.remove('on')});
+})();
+</script>
+</body></html>
