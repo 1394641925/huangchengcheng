@@ -33,15 +33,6 @@
     <div class="chat-box">
       <div class="chat-top"><div class="av">皇</div><div><b>皇城殡仪 · AI 殡葬顾问</b><div class="status">在线 · 通常几秒内回复</div></div></div>
       <div class="chat-log" id="chatLog"></div>
-      <div class="chips" id="chips">
-        <button class="chip">亲人去世，第一步该做什么？</button>
-        <button class="chip">火化需要哪些材料？</button>
-        <button class="chip">推荐一套体面的火化套餐</button>
-        <button class="chip">骨灰坛有哪些选择？</button>
-        <button class="chip">三档火化服务有什么区别？用表格说</button>
-        <button class="chip">有佛教仪式需求，怎么安排？</button>
-        <button class="chip">生态安葬是怎么回事？</button>
-      </div>
       <div class="chat-input">
         <input type="text" id="msgInput" placeholder="说出您的情况，例如：为长辈办后事，需要准备什么…" autocomplete="off">
         <button class="btn btn-copper" id="sendBtn">发送</button>
@@ -98,7 +89,7 @@
         '<tr><td><b>简约标准</b></td><td>¥1,880 起</td><td>标准火化炉</td><td>预算有限、追求庄重</td></tr>'+
         '<tr><td><b>尊贵体面</b></td><td>¥3,880 起</td><td>高档火化炉</td><td>大多数家庭的选择</td></tr>'+
         '<tr><td><b>生态安葬</b></td><td>¥4,680 起</td><td>火化 + 生态葬位</td><td>节地环保、回归自然</td></tr>'+
-        '</tbody></table><div class="tiny" style="margin-top:8px">需要具体服务介绍，可说「推荐一套火化套餐」或「骨灰坛有哪些」。</div>',true);
+        '</tbody></table>',true);
       return;
     }
     // 第一步/流程
@@ -154,14 +145,11 @@
       reply('','<div>预算约 ¥'+budget+'，这几项服务较合适：</div>'+(list.length?recHtml(list):'这个预算建议选择简约标准档，可致电 400-673-0529 由顾问搭配。'),true);return;
     }
     // 默认
-    reply('我可以帮您梳理办理流程、告知所需材料、对比服务档位、解答宗教习俗与费用疑问。您可以这样说：「亲人去世第一步怎么办」「火化需要哪些材料」或「推荐一套体面的火化套餐」。');
+    reply('我可以帮您梳理办理流程、告知所需材料、对比服务档位、解答宗教习俗与费用疑问。您可以直接说出想了解的事项，我会尽力为您解答。');
   }
   function send(){var v=input.value.trim();if(!v)return;addMsg(v,'me');input.value='';respond(v)}
   sendBtn.addEventListener('click',send);
   input.addEventListener('keydown',function(e){if(e.key==='Enter')send()});
-  document.getElementById('chips').addEventListener('click',function(e){
-    if(e.target.tagName!=='BUTTON')return;addMsg(e.target.textContent,'me');respond(e.target.textContent);
-  });
   var c=document.getElementById('drawerClose');
   if(c)c.addEventListener('click',function(){document.getElementById('drawerMask').classList.remove('on');document.getElementById('drawer').classList.remove('on')});
 })();
