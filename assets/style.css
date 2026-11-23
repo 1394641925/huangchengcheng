@@ -188,17 +188,17 @@ table.tbl{width:100%;border-collapse:collapse;min-width:620px;font-size:14px}
 .faq .ans{padding:0 4px 22px;color:var(--ink2);font-size:13.5px;line-height:2}
 
 /* 页脚 */
-.foot{background:var(--ink0);color:#a9a49b;margin-top:0}
-.foot .grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:40px;padding:60px 0 46px}
-.foot .brand .logo{color:#fff}
-.foot .brand .logo .mark{border-color:var(--copper);color:var(--copper-2)}
-.foot .brand p{margin-top:18px;font-size:12.5px;line-height:2;color:#8f8a82}
-.foot h5{color:#e8e2d6;font-family:var(--serif);font-size:14px;letter-spacing:.16em;margin-bottom:18px;font-weight:600}
-.foot a{display:block;color:#969087;font-size:12.5px;margin-bottom:11px}
-.foot a:hover{color:var(--copper-2)}
-.foot .contact-line{font-size:12.5px;margin-bottom:11px;color:#969087}
-.foot .bottom{border-top:1px solid rgba(255,255,255,.1);padding:22px 0;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:11.5px;color:#6e6a64;letter-spacing:.05em}
-@media(max-width:900px){.foot .grid{grid-template-columns:1fr 1fr;gap:34px}}
+.sitefoot{background:var(--ink0);color:#a9a49b;margin-top:0}
+.sitefoot .grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:40px;padding:60px 0 46px}
+.sitefoot .brand .logo{color:#fff}
+.sitefoot .brand .logo .mark{border-color:var(--copper);color:var(--copper-2)}
+.sitefoot .brand p{margin-top:18px;font-size:12.5px;line-height:2;color:#8f8a82}
+.sitefoot h5{color:#e8e2d6;font-family:var(--serif);font-size:14px;letter-spacing:.16em;margin-bottom:18px;font-weight:600}
+.sitefoot a{display:block;color:#969087;font-size:12.5px;margin-bottom:11px}
+.sitefoot a:hover{color:var(--copper-2)}
+.sitefoot .contact-line{font-size:12.5px;margin-bottom:11px;color:#969087}
+.sitefoot .bottom{border-top:1px solid rgba(255,255,255,.1);padding:22px 0;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:11.5px;color:#6e6a64;letter-spacing:.05em}
+@media(max-width:900px){.sitefoot .grid{grid-template-columns:1fr 1fr;gap:34px}}
 
 /* 内页头 */
 .pagehead{background:var(--ink0);color:#fff;border-bottom:1px solid rgba(255,255,255,.1)}
@@ -254,12 +254,9 @@ table.tbl{width:100%;border-collapse:collapse;min-width:620px;font-size:14px}
 .prod .price{margin-top:12px;display:flex;align-items:baseline;gap:8px}
 .prod .price b{font-family:var(--serif);font-size:19px;color:var(--copper)}
 .prod .price del{font-size:12px;color:var(--ink3)}
-/* 产品卡按钮区：覆盖全局 .foot（页脚）样式，避免类名冲突导致黑底+灰字 */
-.prod .foot{display:flex;gap:8px;margin-top:14px;background:transparent;color:inherit}
+/* 产品卡按钮区（.foot 为卡片内局部类名，与页脚 .sitefoot 互不冲突） */
+.prod .foot{display:flex;gap:8px;margin-top:14px}
 .prod .foot .btn{flex:1}
-.prod .foot a.btn{display:inline-flex;color:#fff;margin-bottom:0;font-size:12.5px}
-.prod .foot a.btn-outline{color:var(--ink);background:transparent;border-color:var(--line-2)}
-.prod .foot a.btn-outline:hover{color:var(--copper);border-color:var(--copper)}
 @media(max-width:1000px){.prod-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.prod-grid{grid-template-columns:1fr}}
 
