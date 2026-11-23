@@ -254,8 +254,12 @@ table.tbl{width:100%;border-collapse:collapse;min-width:620px;font-size:14px}
 .prod .price{margin-top:12px;display:flex;align-items:baseline;gap:8px}
 .prod .price b{font-family:var(--serif);font-size:19px;color:var(--copper)}
 .prod .price del{font-size:12px;color:var(--ink3)}
-.prod .foot{display:flex;gap:8px;margin-top:14px}
+/* 产品卡按钮区：覆盖全局 .foot（页脚）样式，避免类名冲突导致黑底+灰字 */
+.prod .foot{display:flex;gap:8px;margin-top:14px;background:transparent;color:inherit}
 .prod .foot .btn{flex:1}
+.prod .foot a.btn{display:inline-flex;color:#fff;margin-bottom:0;font-size:12.5px}
+.prod .foot a.btn-outline{color:var(--ink);background:transparent;border-color:var(--line-2)}
+.prod .foot a.btn-outline:hover{color:var(--copper);border-color:var(--copper)}
 @media(max-width:1000px){.prod-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.prod-grid{grid-template-columns:1fr}}
 
