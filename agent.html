@@ -55,6 +55,31 @@
 (function(){
   var log=document.getElementById('chatLog'),input=document.getElementById('msgInput'),sendBtn=document.getElementById('sendBtn');
   var PRODUCTS=window.HJ.PRODUCTS;
+
+  /* ===== 真实 AI 接入（失败自动回退本地）===== */
+  var AI_URL='https://xcs-ai.pages.dev/',AI_PASS='sunxiaochuan666',AI_MODEL='THUDM/GLM-4-9B-0414';
+  var AI_SYSTEM='你是「皇城殡仪服务馆」的智能顾问，语气庄重、体贴、专业，体恤家属情绪。只回答殡葬服务相关问题：办理流程、所需材料、费用减免、服务档位、宗教习俗、遗体接运时效。服务明码标价：遗体接运880元起、标准火化套餐1880元起、尊贵套餐3880元起、生态安葬4680元起；24小时接运，市区30至60分钟到位；热线400-673-0527。回答简洁，控制在120字以内。不要编造本站没有的信息，不要讨论与业务无关的话题；无关问题请礼貌引导回殡仪服务咨询。';
+  var aiHistory=[];
+  function escHtml(s){return String(s).replace(/[&<>"']/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]})}
+  function fmt(s){return escHtml(s).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/\n/g,'<br>')}
+  function aiReply(q){
+    var t=typing();sendBtn.disabled=true;
+    aiHistory.push({role:'user',content:q});if(aiHistory.length>12)aiHistory=aiHistory.slice(-12);
+    var msgs=[{role:'system',content:AI_SYSTEM}].concat(aiHistory),done=false;
+    var timer=setTimeout(function(){fallback()},12000);
+    function fallback(){if(done)return;done=true;clearTimeout(timer);t.remove();sendBtn.disabled=false;respond(q)}
+    fetch(AI_URL,{method:'POST',headers:{'Content-Type':'application/json','X-Access-Pass':AI_PASS},body:JSON.stringify({model:AI_MODEL,messages:msgs,stream:false})})
+      .then(function(r){return r.json()})
+      .then(function(d){
+        if(done)return;
+        var c=d.choices&&d.choices[0]&&d.choices[0].message&&d.choices[0].message.content;
+        if(!c)throw new Error('empty');
+        done=true;clearTimeout(timer);t.remove();sendBtn.disabled=false;
+        aiHistory.push({role:'assistant',content:c});
+        addMsg(fmt(c),'ai',true);
+      })
+      .catch(fallback);
+  }
   function addMsg(text,who,html){
     var d=document.createElement('div');d.className='msg'+(who==='me'?' me':'');
     var av=document.createElement('div');av.className='av';av.textContent=who==='me'?'您':'皇';
@@ -147,7 +172,7 @@
     // 默认
     reply('我可以帮您梳理办理流程、告知所需材料、对比服务档位、解答宗教习俗与费用疑问。您可以直接说出想了解的事项，我会尽力为您解答。');
   }
-  function send(){var v=input.value.trim();if(!v)return;addMsg(v,'me');input.value='';respond(v)}
+  function send(){var v=input.value.trim();if(!v||sendBtn.disabled)return;addMsg(v,'me');input.value='';aiReply(v)}
   sendBtn.addEventListener('click',send);
   input.addEventListener('keydown',function(e){if(e.key==='Enter')send()});
   var c=document.getElementById('drawerClose');
